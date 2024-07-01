@@ -13,10 +13,12 @@ let solution = "abcd";
 const masterMind = (guess) => {
     if (solution === guess) {
         console.log("You guessed it!");
+        return true; // return statement for the tests
     } else {
         let hint = generateHint(guess);
         board.push(`${guess}, ${hint}`);
         console.log(board);
+        return false; //return statement for the tests
     }
 }
 
@@ -43,15 +45,21 @@ const generateHint = (guess) => {
 
 }
 
+const checkMoves = () => {
+    if (board.length < 10) { 
+        getPrompt();
+        return true; //return statement for the tests
+    } else {
+        console.log(`You ran out of turns! The solution was ${solution}.`)
+        return false; //return statement for the tests
+    }
+}
+
 const getPrompt = () => {
     rl.question('guess: ', (a) => {
-        masterMind(a)
+        masterMind(a);
 
-        if (board.length < 10) { 
-            getPrompt();
-        } else {
-            console.log(`You ran out of turns! The solution was ${solution}.`)
-        }
+        checkMoves();
     });
   }
   
@@ -59,37 +67,24 @@ const getPrompt = () => {
   
   if (typeof describe === 'function') {
   
-    describe('#towersOfHanoi()', () => {
-      it('should be able to move a block', () => {
-        towersOfHanoi('a', 'b');
-        assert.deepEqual(stacks, { a: [4, 3, 2], b: [1], c: [] });
+    describe('#getPrompt()', () => {
+      it('should stop after 10 guesses', () => {
+        board.length = 10; // game needs to stop
+        assert.equal(checkMoves(), false);
       });
     });
   
-    describe('#isLegal()', () => {
-      it('should not allow an illegal move', () => {
-        stacks = {
-          a: [4, 3, 2],
-          b: [1],
-          c: []
-        };
-        assert.equal(isLegal('a', 'b'), false);
-      });
-      it('should allow a legal move', () => {
-        stacks = {
-          a: [4, 3, 2, 1],
-          b: [],
-          c: []
-        };
-        assert.equal(isLegal('a', 'c'), true);
+    describe('#generateHint()', () => {
+      it('should generate the correct hint', () => {
+        assert.deepEqual(generateHint('aecd'), '3-0');
       });
     });
+
     describe('#checkForWin()', () => {
       it('should detect a win', () => {
-        stacks = { a: [], b: [4, 3, 2, 1], c: [] };
-        assert.equal(checkForWin(), true);
-        stacks = { a: [1], b: [4, 3, 2], c: [] };
-        assert.equal(checkForWin(), false);
+        solution = "qwer"
+        assert.equal(masterMind("qwer"), true);
+        assert.equal(masterMind("qwet"), false);
       });
     });
   
