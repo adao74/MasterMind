@@ -36,9 +36,18 @@ const generateHint = (guess) => {
     }
 
     for (let i = 0; i < solutionArray.length; i++) {
-        if (guessArray[i] === solutionArray[0] || guessArray[i] === solutionArray[1] || guessArray[i] === solutionArray[2] || guessArray[i] === solutionArray[3]) {
-            correctLetters++;
-        }  
+
+      const targetIndex = solutionArray.indexOf(guessArray[i])
+
+      if (targetIndex > -1) {
+        solutionArray[i] = null; // not really needed 
+        correctLetters++
+      }
+
+      // Another method:
+      // if (guessArray[i] === solutionArray[0] || guessArray[i] === solutionArray[1] || guessArray[i] === solutionArray[2] || guessArray[i] === solutionArray[3]) {
+      //     correctLetters++;
+      // }  
     }
 
     return `${correctLetterLocations}-${correctLetters}`
