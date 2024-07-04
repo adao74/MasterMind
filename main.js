@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 });
 
 let board = [];
-let solution = "abcd";
+const solution = "abcd";
 
 const masterMind = (guess) => {
     if (solution === guess) {

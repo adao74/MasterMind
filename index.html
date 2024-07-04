@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Play MasterMind!</h1>
+    <label for="guess">Guess:</label>
+    <input id="guess" type="text" placeholder="jklm" value="" onkeyup="saveInput(this.value)"></input>
+    <button id="buttons" onclick="masterMind(event)">Guess</button><br /><br />
+    <hr /><br />
+    <section id="board">Board:</section>
+</body>
+</html>
