@@ -1,4 +1,5 @@
 'use strict';
+var colors = require('colors'); // colors package
 
 const assert = require('assert');
 const readline = require('readline');
@@ -15,7 +16,7 @@ const masterMind = (guess) => {
         console.log("You guessed it!");
         return true; // return statement for the tests
     } else {
-        let hint = generateHint(guess);
+        const hint = generateHint(guess);
         board.push(`${guess}, ${hint}`);
         console.log(board);
         return false; //return statement for the tests
@@ -50,8 +51,8 @@ const generateHint = (guess) => {
       // }  
     }
 
+    console.log(`Correct letter locations & letters: ${correctLetterLocations.toString().red}-${correctLetters.toString().white}`) // uses colors package
     return `${correctLetterLocations}-${correctLetters}`
-
 }
 
 const checkMoves = () => {
