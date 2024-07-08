@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 });
 
 let board = [];
-const solution = "abcd";
+let solution = "abcd";  // declare with "let" b/c I re-assigned a value to solution in my unit tests 
 
 const masterMind = (guess) => {
     if (solution === guess) {
