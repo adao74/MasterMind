@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Contains the event listeners attached to the elements so need to declare the elements first. Use defer keyword OR put script at bottom of body -->
+    <script src="index.js" defer></script> 
+</head>
+<body>
+    <h1>Play MasterMind!</h1>
+    <label for="guess">Guess:</label>
+    <input id="guess" type="text" placeholder="jklm" value=""></input>  <!--Note: still works even if I don't have value attribute set to empty string (attribute is built-in!!) -->
+    <button id="buttons" >Guess</button><br /><br />
+    <hr /><br />
+    <section id="board">Board:</section>
+</body>
+</html>
