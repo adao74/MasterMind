@@ -2,10 +2,17 @@ const solution = "abcd";
 let guess = ""
 let numMoves = 0;
 
-const saveInput = (val) => {
-  // Never need to reset guess b/c it gets re-saved on the onkeyup event
-  guess = val // type is string
-}
+document.getElementById("guess").addEventListener("keyup", (event) => {
+    // Never need to reset guess b/c it gets re-saved on the onkeyup event
+    // Alternative: guess = document.getElementById("guess").value
+    guess = event.target.value // type is string
+    console.log(guess)
+    
+});
+
+document.getElementById("buttons").addEventListener("click", () => {
+    masterMind();
+});
 
 const masterMind = () => {
     numMoves++;
